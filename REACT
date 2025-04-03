@@ -1,0 +1,86 @@
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Menu, X } from "lucide-react";
+
+export default function PortfolioPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-gray-100 text-gray-900 font-sans">
+      {/* Navbar */}
+      <header className="fixed top-0 left-0 w-full bg-white shadow-md p-6 flex justify-between items-center z-50">
+        <h1 className="text-xl font-bold">@AyushBarnwal</h1>
+        <nav className="hidden md:flex space-x-6">
+          <a href="#about" className="hover:underline">About</a>
+          <a href="#work" className="hover:underline">Work</a>
+          <a href="#contact" className="hover:underline">Contact</a>
+        </nav>
+        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </header>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <nav className="absolute top-0 left-0 w-full bg-white p-6 shadow-md md:hidden flex flex-col items-center space-y-4">
+          <a href="#about" className="block py-2">About</a>
+          <a href="#work" className="block py-2">Work</a>
+          <a href="#contact" className="block py-2">Contact</a>
+        </nav>
+      )}
+
+      {/* Hero Section */}
+      <section className="text-center py-24 bg-gray-200 flex flex-col items-center">
+        <img src="/profile.jpg" alt="Profile" className="w-32 h-32 rounded-full" />
+        <h2 className="text-5xl font-bold mt-4">Flow Developer — UI/UX</h2>
+        <Button className="mt-4 px-6 py-2 text-lg bg-black text-white">Hi I'm Ayush</Button>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="p-8 bg-white text-center">
+        <h3 className="text-3xl font-bold">About</h3>
+        <p className="mt-2 text-gray-700 max-w-2xl mx-auto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
+        </p>
+      </section>
+
+      {/* Work Section */}
+      <section id="work" className="p-8">
+        <h3 className="text-3xl font-bold text-center">Recent Work</h3>
+        <ul className="mt-8 space-y-4 max-w-3xl mx-auto">
+          {['Decodable.co', 'Gofirefly.io', 'Blinkops.com', 'Withkanvas.com'].map((site, index) => (
+            <li key={index} className="flex justify-between border-b pb-2 text-lg">
+              <span>{site}</span>
+              <span className="text-gray-600">→</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="p-8 bg-gray-100 text-center">
+        <h3 className="text-3xl font-bold">Testimonials</h3>
+        <div className="mt-6 max-w-2xl mx-auto">
+          <blockquote className="italic border-l-4 border-gray-500 pl-4">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          </blockquote>
+          <p className="mt-2 font-bold">- Alex Conrad</p>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="p-8 bg-white text-center">
+        <h3 className="text-3xl font-bold">Let's build something cool together</h3>
+        <form className="mt-4 space-y-4 max-w-lg mx-auto">
+          <Input placeholder="Name" className="w-full" />
+          <Input placeholder="Email" className="w-full" />
+          <Input placeholder="Subject" className="w-full" />
+          <Textarea placeholder="Message" className="w-full" />
+          <Button type="submit" className="bg-black text-white w-full">Submit</Button>
+        </form>
+      </section>
+    </div>
+  );
+}
