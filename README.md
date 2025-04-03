@@ -47,12 +47,4 @@ npm run build
 ```
 
 ## License
-This project is open-source and available under the MIT License.
-
----
-
-### Author
-**Your Name**  
-[Your Website](https://yourwebsite.com)  
-[Your GitHub](https://github.com/yourusername)  
-
+This project is open-source and available under the MIT License
